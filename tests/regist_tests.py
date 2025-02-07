@@ -47,12 +47,13 @@ def test_regirst_with_empty_firstname(driver):
     assert first_name.get_attribute("validationMessage") == "Заполните это поле."
 
 
-def test_emply_lasntame(driver):
+def test_empty_lastname(driver):
     first_name = driver.find_element(By.CSS_SELECTOR, ".first_block .form-control.first")
     first_name.send_keys("Andrey")
     email = driver.find_element(By.CSS_SELECTOR, ".first_block .form-control.third")
     email.send_keys("asd@gmail.com")
     second_name = driver.find_element(By.CSS_SELECTOR, ".first_block .form-control.second")
+    sleep(3)
     assert second_name.get_attribute("validationMessage") == "Заполните это поле."
 
 
@@ -67,3 +68,7 @@ def test_empty_email(driver):
     submit_button = driver.find_element(By.CSS_SELECTOR, ".btn")
     submit_button.click()
     assert email.get_attribute("validationMessage") == "Заполните это поле."
+
+
+
+
