@@ -16,8 +16,8 @@ def driver():
     service = ChromeService(executable_path='C:/Users/andre/Desktop/chromedriver-win64/chromedriver.exe')
     driver = webdriver.Chrome(service=service)
 
-    # driver.get("https://bonigarcia.dev/selenium-webdriver-java/iframes.html") # 1
-    driver.get("https://www.globalsqa.com/demo-site/draganddrop/") # 2
+    driver.get("https://bonigarcia.dev/selenium-webdriver-java/iframes.html") # 1
+    # driver.get("https://www.globalsqa.com/demo-site/draganddrop/") # 2
 
     yield driver
     driver.quit()

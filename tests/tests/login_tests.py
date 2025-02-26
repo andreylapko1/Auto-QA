@@ -15,14 +15,12 @@ import time
 def driver():
     service = ChromeService(executable_path='C:/Users/andre/Desktop/chromedriver-win64/chromedriver.exe')
     driver = webdriver.Chrome(service=service)
-
     driver.get("https://www.saucedemo.com/")
-
     yield driver
     driver.quit()
 
 
-def test_login(driver):
+def test_success_login(driver):
     username_input_field = driver.find_element(By.ID, "user-name")
     username_input_field.send_keys("standard_user")
     password_input_field = driver.find_element(By.ID, "password")
