@@ -28,3 +28,18 @@ class LoginPage:
         login_button = self.login_button()
         login_button.click()
 
+    def h3_error_message_text(self):
+        return self.driver.find_element(By.TAG_NAME, "h3").text
+
+
+    def success_login(self, username_value, password_value):
+        self.enter_username(username_value)
+        self.enter_password(password_value)
+        self.click_login_button()
+
+
+
+
+
+
+
