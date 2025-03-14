@@ -1,4 +1,6 @@
 from time import sleep
+
+import allure
 from selenium import webdriver
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
@@ -19,7 +21,9 @@ def driver():
     yield driver
     driver.quit()
 
-
+@allure.feature("login")
+@allure.story("Success")
+@allure.title("Login success")
 def test_success_login(driver):
     username_input_field = driver.find_element(By.ID, "user-name")
     username_input_field.send_keys("standard_user")
@@ -33,6 +37,8 @@ def test_success_login(driver):
     assert inventory_list.is_displayed()
 
 
+@allure.story("Failed")
+@allure.title("Banned login")
 def test_blocked_user(driver):
     username_input_field = driver.find_element(By.ID, "user-name")
     username_input_field.send_keys("locked_out_user")
@@ -43,7 +49,7 @@ def test_blocked_user(driver):
     error_msg = driver.find_element(By.CSS_SELECTOR, '[data-test="error"]')
     assert 'Epic sadface: Sorry, this user has been locked out.' in error_msg.text
 
-
+@allure.story("Failed")
 def test_login_without_user(driver):
     password_input_field = driver.find_element(By.ID, "password")
     password_input_field.send_keys("secret_sauce")
@@ -52,6 +58,8 @@ def test_login_without_user(driver):
     error_msg = driver.find_element(By.CSS_SELECTOR, '[data-test="error"]')
     assert 'Epic sadface: Username is required' in error_msg.text
 
+
+@allure.story("Failed")
 def test_login_without_password(driver):
     username_input_field = driver.find_element(By.ID, "user-name")
     username_input_field.send_keys("locked_out_user")

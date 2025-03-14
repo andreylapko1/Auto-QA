@@ -1,3 +1,4 @@
+import allure
 import requests
 
 
@@ -16,6 +17,8 @@ class ReqresApi:
         assert resp.status_code == 200
         return resp.json()['data']
 
+
+    @allure.step('Registration with email: {email} _and_ password: {пароль}')
     def register(self, email, password):
         data = {
             "email": email,
